@@ -2,6 +2,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Store, MoveRight, Briefcase, GraduationCap, Star } from '@lucide/svelte';
 	import * as Carousel from '$lib/components/ui/carousel';
+	import VideoTextExample from '$lib/app/videotext/VideoTextExample.svelte';
 
 	const carouselImg = [
 		{
@@ -73,42 +74,23 @@
 
 	let { products } = data;
 </script>
-
 <main class="min-h-screen">
-	<!-- Hero Section -->
-	<section class="px-4 py-8 text-center md:px-8 lg:px-32 md:py-16">
-		<div class="mx-auto max-w-4xl space-y-6">
-			<Button
-				href="/login"
-				class="mx-auto inline-flex items-center gap-2 rounded-full border-2 border-primary bg-transparent px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-white"
-			>
-				🚀 Try kayaco now
-			</Button>
-
-			<h1 class="text-2xl font-bold leading-tight text-gray-900 sm:text-3xl md:text-5xl lg:text-6xl">
-				Your Path to Growth and 
-				<span class="block">Opportunity. Kayaco Kayamo</span>
-			</h1>
-
-			<p class="mx-auto max-w-2xl text-sm text-gray-600 sm:text-base md:text-lg">
-				Empowering persons with disabilities through education, employment, and enterprise with KayaCo.
-			</p>
-
-			<div class="flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4">
-				<Button class="h-11 bg-blue-600 px-6 font-medium text-white hover:bg-blue-700" href="/register">
-					Get Started
-				</Button>
-				<Button href="/kmart" variant="ghost" class="h-11 px-6 font-medium text-gray-700 hover:bg-gray-100">
-					Check Market Place 
-					<MoveRight class="ml-2 h-4 w-4" />
-				</Button>
-			</div>
+<section class="px-4 py-12 md:px-8 lg:px-32">
+	<div class="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
+		<div class="space-y-6 text-center md:text-left">
+			<VideoTextExample/>
+			<p>KayaCo is a platform that connects PWDs with employers, offering a unique marketplace for job opportunities and products.</p>
+			<div class="flex flex-col gap-3 justify-center sm:flex-row sm:justify-center sm:gap-4">
+		<Button class="h-11 bg-sky-400 px-6 rounded-lg font-medium text-white hover:bg-blue-700" href="/register">
+			Get Started
+		</Button>
+		<Button href="/kmart" variant="ghost" class="h-11 px-6 font-medium rounded-lg text-gray-700 hover:bg-blue-700 hover:text-white">
+			Check Market Place 
+			<MoveRight class="ml-2 h-4 w-4" />
+		</Button>
 		</div>
-	</section>
-
-	<!-- Carousel Section -->
-	<section class="px-4 py-8 md:px-8 lg:px-32">
-		<div class="mx-auto max-w-6xl">
+		</div>
+		<div>
 			<Carousel.Root class="w-full">
 				<Carousel.Content>
 					{#each carouselImg as img, i (i)}
@@ -117,7 +99,7 @@
 								<img 
 									src={img.src} 
 									alt="Carousel image {i + 1}" 
-									class="h-56 w-full rounded-2xl object-cover shadow-lg sm:h-72 md:h-96 lg:h-[500px]" 
+									class="h-64 w-full rounded-2xl object-cover shadow-lg sm:h-80 md:h-96 lg:h-[500px]" 
 								/>
 							</div>
 						</Carousel.Item>
@@ -127,17 +109,14 @@
 				<Carousel.Next class="right-4" />
 			</Carousel.Root>
 		</div>
-	</section>
-
-	<!-- Top Products Section -->
+	</div>
+</section>
 	<section class="px-4 py-12 md:px-8 lg:px-32 md:py-20">
 		<div class="mx-auto max-w-6xl">
 			<div class="mb-8 text-center">
 				<h2 class="text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">Top Products</h2>
 				<p class="mt-2 text-gray-600">View the top products for each municipality</p>
 			</div>
-
-			<!-- Municipalities -->
 			<div class="mb-12">
 				<Carousel.Root opts={{ align: 'start' }} class="w-full">
 					<Carousel.Content>
