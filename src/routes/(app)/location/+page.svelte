@@ -80,31 +80,46 @@
       products: ["Bamboo Crafts", "Bananas", "Root Crops"]
     }
   ];
+
+  const municipalityLogoByName: Record<string, string> = {
+    "Balanga City": "/img/balanga.webp",
+    "Abucay": "/img/abucay.webp",
+    "Bagac": "/img/bagac.webp",
+    "Dinalupihan": "/img/dinalupihan.webp",
+    "Hermosa": "/img/hermosa.webp",
+    "Limay": "/img/limay.webp",
+    "Mariveles": "/img/mariveles.webp",
+    "Morong": "/img/morong.webp",
+    "Orani": "/img/orani.webp",
+    "Orion": "/img/orion.webp",
+    "Pilar": "/img/pilar.webp",
+    "Samal": "/img/samal.webp"
+  };
 </script>
 
 <div class="max-w-6xl mx-auto px-6 py-16">
   <h1 class="text-center mb-12 text-3xl font-bold text-gray-900">
-    Municipalities of Bataan
+    Contributors of KayaCo
   </h1>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
     {#each municipalities as muni}
-      <div
-        class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-transform duration-200"
-      >
-        <h2 class="text-lg font-semibold text-blue-600 mb-2">{muni.name}</h2>
-        <p class="text-gray-700 text-sm mb-1">
-          <strong>Location:</strong> {muni.location}
-        </p>
-        <p class="text-gray-600 text-sm mb-3">{muni.description}</p>
-        <p class="text-gray-800 font-medium mb-1">Products:</p>
-        <ul class="list-disc list-inside text-gray-600 text-sm space-y-1">
-          {#each muni.products as product}
-            <li>{product}</li>
-          {/each}
-        </ul>
+    <div class="relative overflow-hidden border border-gray-200 rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-transform duration-200">
+            <img src={municipalityLogoByName[muni.name]} alt={`${muni.name} logo`} class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none select-none" />
+             <div class="relative p-6">
+          <h2 class="text-lg font-semibold text-blue-600 mb-2">{muni.name}</h2>
+          <p class="text-gray-700 text-sm mb-1">
+            <strong>Location:</strong> {muni.location}
+          </p>
+          <p class="text-gray-600 text-sm mb-3">{muni.description}</p>
+          <p class="text-gray-800 font-medium mb-1">Products:</p>
+          <ul class="list-disc list-inside text-gray-600 text-sm space-y-1">
+            {#each muni.products as product}
+              <li>{product}</li>
+            {/each}
+          </ul>
+        </div>
       </div>
     {/each}
   </div>
 </div>
-

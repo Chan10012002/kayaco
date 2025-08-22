@@ -20,62 +20,73 @@
 
 	let isSubmitting = false;
 </script>
-
 <div
-	class={`group relative flex w-full max-w-xs flex-col rounded-2xl p-4 text-sm shadow transition-transform hover:scale-105 ${product.cardClass}`}
+	class={`relative flex flex-col w-full h-full min-h-[420px] rounded-2xl overflow-hidden bg-white shadow-none sm:shadow-md transition-transform motion-safe:hover:scale-105 ${product.cardClass}`}
 >
-	<img
-		src={product.imageSrc}
-		alt={product.title}
-		class="mb-3 h-40 w-full rounded-xl object-cover"
-	/>
-
-	<h2 class="mt-1 text-lg font-bold text-gray-800">{product.title}</h2>
-	<p class="leading-snug text-gray-700">{product.description}</p>
-
-	<div class="mt-2 flex flex-col gap-1 text-sm text-gray-600">
-		<span class="text-base font-semibold text-green-600">
-			{Number(product.price)
-				.toLocaleString('en-PH', {
-					style: 'currency',
-					currency: 'PHP',
-					minimumFractionDigits: 2
-				})
-				.replace('PHP', '')
-				.trim()}
-		</span>
-		<span class="text-gray-600">Available: {product.quantity}</span>
+	<!-- Image (with hover zoom) -->
+	<div class="overflow-hidden h-52 w-full">
+		<img
+			src={product.imageSrc}
+			alt={product.title}
+			class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+		/>
 	</div>
 
-	<div class="mt-3">
-		<form method="POST" action="?/addToCart" use:enhance={() => {
-			isSubmitting = true;
-			return async ({ update, result }) => {
-				if (result?.type === 'success') {
-					toast.success('Product added to cart successfully!');
-					// Force re-run the load function
-					await invalidate(() => true);
-				}
-				if (result?.type === 'failure') {
-					toast.error('Something went wrong.');
-				}
-				await update();
-				isSubmitting = false;
-			};
-		}}>
-			<input type="hidden" name="productId" value={product.id} />
-			<input type="hidden" name="variant" value="Default" />
-			<input type="hidden" name="quantity" value="1" />
+	<!-- Card content -->
+	<div class="flex flex-col justify-between flex-grow p-4 text-sm">
+		<div>
+			<h2 class="text-lg font-bold text-gray-800">{product.title}</h2>
+			<p class="text-gray-700">{product.description}</p>
 
-			<Button
-				type="submit"
-				disabled={isSubmitting}
-				class="w-full rounded-md bg-blue-600 px-3 py-1 text-white hover:bg-blue-400 disabled:opacity-50 disabled:cursor-not-allowed"
-				variant="secondary"
+			<div class="mt-1 flex flex-col gap-1 text-sm text-gray-600">
+				<span class="text-base font-semibold text-green-600">
+					{Number(product.price)
+						.toLocaleString('en-PH', {
+							style: 'currency',
+							currency: 'PHP',
+							minimumFractionDigits: 2
+						})
+						.replace('PHP', '')
+						.trim()}
+				</span>
+				<span>Available: {product.quantity}</span>
+			</div>
+		</div>
+
+		<!-- Add to Cart Button at bottom -->
+		<div class="mt-4">
+			<form
+				method="POST"
+				action="?/addToCart"
+				use:enhance={() => {
+					isSubmitting = true;
+					return async ({ update, result }) => {
+						if (result?.type === 'success') {
+							toast.success('Product added to cart successfully!');
+							await invalidate(() => true);
+						}
+						if (result?.type === 'failure') {
+							toast.error('Something went wrong.');
+						}
+						await update();
+						isSubmitting = false;
+					};
+				}}
 			>
-				<ShoppingCart class="mr-1 inline h-5 w-5" />
-				{isSubmitting ? 'Adding...' : 'Add to Cart'}
-			</Button>
-		</form>
+				<input type="hidden" name="productId" value={product.id} />
+				<input type="hidden" name="variant" value="Default" />
+				<input type="hidden" name="quantity" value="1" />
+
+				<Button
+					type="submit"
+					disabled={isSubmitting}
+					class="w-full rounded-md bg-blue-600 px-3 py-2 text-white hover:bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+					variant="secondary"
+				>
+					<ShoppingCart class="mr-1 inline h-5 w-5" />
+					{isSubmitting ? 'Adding...' : 'Add to Cart'}
+				</Button>
+			</form>
+		</div>
 	</div>
 </div>

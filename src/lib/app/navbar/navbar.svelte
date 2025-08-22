@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
+	import { Search } from '@lucide/svelte';
 	let isOpen = $state(false);
 
 	const toggleMenu = () => {
@@ -12,8 +13,9 @@
 
 	const links = [
 		{ name: 'Home', href: '/landingpage' },
-		{ name: 'Features', href: '#features' },
 		{ name: 'Mart', href: '/kmart' },
+		{ name: 'Accessibility', href: '/accessibility' },
+		{ name: 'About us', href: '/about' },
 		{ name: 'Courses', href: '/courses' }
 	];
 </script>
@@ -34,6 +36,17 @@
 							{link.name}
 						</a>
 					{/each}
+					<div class="relative flex items-center ml-2">
+						<input
+							type="text"
+							placeholder="Search..."
+							class="pl-8 pr-2 py-1.5 rounded-md border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition w-48 md:w-64 bg-gray-50"
+							style="font-size: 0.92rem;"
+						/>
+						<span class="absolute left-2 top-1/2 -translate-y-1/2 text-gray-400">
+							<Search class="w-4 h-4 text-blue-600"/>
+						</span>
+					</div>
 				</div>
 			</div>
 

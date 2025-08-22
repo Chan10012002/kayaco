@@ -8,9 +8,8 @@
         <div class="max-w-4xl mx-auto text-center">
             <h1 class="text-4xl font-bold mb-6 text-[#1E3A8A]">About Us</h1>
                 <p class="text-lg leading-relaxed text-[#111827]">
-                    We are dedicated to building a platform that connects people, empowers communities, 
-                    and creates opportunities for everyone. Our mission is to make services more accessible 
-                    and fair, ensuring that both workers and customers benefit equally.
+                    KayaCo is a student-led platform founded by APCAS Tech that empowers persons with disabilities 
+					(PWDs) by providing an inclusive space for entrepreneurship, creativity, and community growth.
                 </p>
          </div>
 </section>
@@ -21,17 +20,17 @@
 			<div class="rounded-2xl border bg-white p-6 shadow-sm hover:shadow-md transition min-h-[200px]">
 				<h3 class="text-lg font-semibold text-[#1E3A8A]">Our Mission</h3>
 				<p class="mt-2 text-md text-[#111827]">
-					To empower persons with disabilities by creating inclusive job opportunities, 
-					promoting skills development, and building a supportive community that values 
-					diversity and equal access.
+					Our mission is to showcase and support the crafts of the PWD community through an accessible
+					e-commerce platform that promotes inclusive shopping, encourages entrepreneurship, and builds
+					opportunities for sustainable livelihood.
 				</p>
 			</div>
 			<div class="rounded-2xl border bg-white p-6 shadow-sm hover:shadow-md transition min-h-[200px]">
 				<h3 class="text-lg font-semibold text-[#1E3A8A]">Our Vision</h3>
 				<p class="mt-2 text-md text-[#111827]">
-					To become the leading platform for inclusive employment in the Philippines, 
-					where every person with a disability has the tools, opportunities, and 
-					support to thrive in their chosen career.
+					To be the Philippines’ leading inclusive platform that not only celebrates the creativity of
+					persons with disabilities but also drives opportunities for employment, skills development, 
+					and sustainable entrepreneurship—fostering a society where inclusion and innovation go hand in hand.
 				</p>
 			</div>
 		</div>
@@ -45,7 +44,6 @@
 		</div>
 		<div class="mx-auto max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 			{#each [
-				{ title: 'Compassion', text: 'We put people first, treating everyone with empathy and respect.' },
 				{ title: 'Inclusivity', text: 'Building opportunities where everyone—especially PWDs—belongs.' },
 				{ title: 'Integrity', text: 'We uphold transparency, honesty, and accountability in all we do.' },
 				{ title: 'Innovation', text: 'Continuously finding creative solutions to empower communities.' },

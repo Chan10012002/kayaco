@@ -360,7 +360,23 @@
 					</DropdownMenu.Root>
 				</div>
 			</div>
-		</aside>
+			<div class="mt-4">
+  			<label class="block text-sm font-medium text-gray-700">Sort by</label>
+  			<DropdownMenu.Root>
+    		<DropdownMenu.Trigger
+     		 class={buttonVariants({ variant: 'outline', class: 'w-full justify-between text-start' })}>
+      		Relevance <ChevronDown />
+    			</DropdownMenu.Trigger>
+    			<DropdownMenu.Content class="flex lg:w-[350px]">
+      		<DropdownMenu.Group class="w-full">
+        <DropdownMenu.Item>Relevance</DropdownMenu.Item>
+        <DropdownMenu.Item>Latest</DropdownMenu.Item>
+        <DropdownMenu.Item>Top Sales</DropdownMenu.Item>
+     	 </DropdownMenu.Group>
+   	 	</DropdownMenu.Content>
+  		</DropdownMenu.Root>
+		</div>
+</aside>
 
 		<div class="flex-1 space-y-4">
 			<!-- Desktop Action Buttons -->
