@@ -1,6 +1,4 @@
-tos 
-
-<script lang="ts">
+=<script lang="ts">
     // You can add navigation logic or props if needed
   </script>
   
