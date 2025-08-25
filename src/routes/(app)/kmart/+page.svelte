@@ -83,7 +83,7 @@
 
 </script>
 
-<div class="mt-6 sm:mt-12 space-y-6 sm:space-y-10 px-2 pb-20 sm:px-4 md:px-8 lg:px-16">
+<div id="main-content" class="mt-6 sm:mt-12 space-y-6 sm:space-y-10 px-2 pb-20 sm:px-4 md:px-8 lg:px-16">
 	<!-- Mobile Header Section -->
 	<div class="lg:hidden px-2 space-y-3">
 		<!-- Search Bar -->

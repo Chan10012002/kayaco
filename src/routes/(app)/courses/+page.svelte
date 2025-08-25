@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main>
+  <main  id="main-content">
     <h1>Coming Soon...</h1>
     <p>We're working hard to bring you something amazing. Stay tuned!</p>
   </main>

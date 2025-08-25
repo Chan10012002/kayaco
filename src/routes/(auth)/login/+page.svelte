@@ -26,7 +26,7 @@
 	const { form: formData, enhance } = form;
 </script>
 
-<div class="container relative mt-12 flex-col items-center justify-center lg:mt-24 border rounded-2xl shadow-2xl bg-white/80 backdrop-blur-md p-6 max-w-5xl">
+<div id="main-content" class="container relative mt-12 flex-col items-center justify-center lg:mt-24 border rounded-2xl shadow-2xl bg-white/80 backdrop-blur-md p-6 max-w-5xl">
 	<div class="flex flex-col-reverse lg:flex-row h-full w-full items-center justify-center">
 		<div class="flex w-full max-w-md flex-col justify-center mx-auto space-y-6 lg:mx-0 lg:w-1/2">
 			<form method="POST" use:enhance action="?/login">
@@ -84,7 +84,7 @@
 		<div class="hidden lg:flex lg:w-1/2 h-full items-center justify-end pl-8">
 			<div class="w-full h-[500px] max-w-lg rounded-2xl overflow-hidden border border-gray-200 shadow-lg flex items-center">
 				<img 
-					src="/img/k-mart.jpg" 
+					src="/img/logreg.png" 
 					alt="orange" 
 					class="object-cover w-full h-full"
 				/>

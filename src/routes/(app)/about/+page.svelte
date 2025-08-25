@@ -3,8 +3,7 @@
 </script>
 
 <div class="w-full px-6 md:px-20 py-10 space-y-10">
-	<!-- Hero Section -->
-	<section class="px-4 py-12 md:px-8 lg:px-32 bg-gray-50">
+	<section id="main-content" class="px-4 py-12 md:px-8 lg:px-32 bg-gray-50">
         <div class="max-w-4xl mx-auto text-center">
             <h1 class="text-4xl font-bold mb-6 text-[#1E3A8A]">About Us</h1>
                 <p class="text-lg leading-relaxed text-[#111827]">

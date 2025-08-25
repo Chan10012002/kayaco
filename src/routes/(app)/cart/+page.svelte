@@ -52,7 +52,7 @@
 	}
 </script>
 
-<section class="bg-gray-50 py-12">
+<section  id="main-content" class="bg-gray-50 py-12">
 	<div class="mx-auto max-w-5xl rounded-2xl bg-white p-8 shadow-xl">
 		<h2 class="mb-8 text-3xl font-bold tracking-tight text-gray-800">Shopping Cart</h2>
 

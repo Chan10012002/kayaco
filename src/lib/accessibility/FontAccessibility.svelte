@@ -23,10 +23,10 @@
 	});
 
 	function getAllTextElements() {
-		const root = document.getElementById('main-content') ?? document.body;
-		return Array.from(root.querySelectorAll('*')).filter(el => {
-			const style = getComputedStyle(el);
-			return style.fontSize && el.children.length === 0 && el.textContent?.trim();
+	const root = document.body;
+	return Array.from(root.querySelectorAll('*')).filter(el => {
+		const style = getComputedStyle(el);
+		return style.fontSize && el.textContent?.trim();
 		});
 	}
 
@@ -82,7 +82,7 @@
 		const key = e.key.toLowerCase();
 		switch (key) {
 			case "0":
-				alert("Accessibility Statement (this page).");
+				window.location.href = "/accessibility";
 				break;
 			case "1":
 				window.location.href = "/"; // Home Page

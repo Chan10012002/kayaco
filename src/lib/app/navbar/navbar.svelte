@@ -20,7 +20,7 @@
 	];
 </script>
 
-<nav class="border-b border-gray-200 bg-white">
+<nav id="main-menu" class="border-b border-gray-200 bg-white">
 	<div class="px-4 sm:px-6 lg:px-24">
 		<div class="flex h-16 items-center justify-between">
 			<div class="flex items-center gap-12">

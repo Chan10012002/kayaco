@@ -70,7 +70,7 @@
     }
 </script>
 
-<section class="max-w-5xl mx-auto p-4 pb-28 pt-20 text-justify">
+<section  id="main-content" class="max-w-5xl mx-auto p-4 pb-28 pt-20 text-justify">
 	<h1 class="text-3xl font-bold mb-6">What is KayaCo?</h1>
 	<p>With today’s technology, it’s easier than ever for persons with disabilities (PWDs) to showcase and sell their products or services from home. At KayaCo, we provide an inclusive online platform that empowers PWD entrepreneurs to earn a living and reach more customers.</p>
 	<br>

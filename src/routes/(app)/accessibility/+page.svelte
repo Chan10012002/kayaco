@@ -45,14 +45,14 @@
 	}
 </script>
 
-<div class="p-8 max-w-4xl mx-auto">
+<div  id="main-content" class="p-8 max-w-4xl mx-auto">
 	<h1 class="text-3xl font-bold mb-2">Accessibility Features</h1>
 	
 
 	<p class="mb-4">
-		The KayaCo online market to provide a website that will give necessary information to the people,
-		regardless of technology or ability. We are doing our best to increase the accessibility and usability of our website in
-		accordance to many available standards and guidelines.
+		The KayaCo Online Market aims to provide a website that delivers essential information to all people, 
+		regardless of their technology or abilities. We are committed to improving the accessibility and usability 
+		of our website in accordance with established standards and guidelines.
 	</p>
 	
 

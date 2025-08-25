@@ -4,7 +4,7 @@ tos
     // You can add navigation logic or props if needed
   </script>
   
-  <section class="bg-gray-50 px-4 py-12 md:px-8 lg:px-32 md:py-20">
+  <section id="main-content" class="bg-gray-50 px-4 py-12 md:px-8 lg:px-32 md:py-20">
     <!-- Page Header -->
     <div class="max-w-3xl mx-auto text-center">
       <h1 class="text-3xl font-bold text-gray-900 md:text-4xl">Terms of Service</h1>

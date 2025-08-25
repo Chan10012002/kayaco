@@ -13,7 +13,7 @@
       </div>
       <h1>Order Placed!</h1>
       <p>Your order was successfully placed<br>and is being prepared for delivery.</p>
-      <div class="image-box">
+      <div id="main-content" class="image-box">
         <img src="/img/k-mart.jpg" alt="Order basket">
       </div>
       <a href="/cart" class="btn">BACK TO CART</a>

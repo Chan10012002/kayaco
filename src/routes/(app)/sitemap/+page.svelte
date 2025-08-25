@@ -2,7 +2,7 @@
   import Boxreveal from "$lib/app/boxreveal/boxreveal.svelte";
 </script>
 
-	<section class="px-4 py-8 md:px-8 lg:px-32 md:py-16">
+	<section id="main-content" class="px-4 py-8 md:px-8 lg:px-32 md:py-16">
 	  <div class="mx-auto max-w-1x2">
 		<Boxreveal boxColor={"#5046e6"} duration={0.5}>
 			<h1 class="text-5xl font-bold mb-6 text-[#020106]">Sitemap</h1>

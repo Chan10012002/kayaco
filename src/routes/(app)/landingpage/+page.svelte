@@ -186,20 +186,17 @@
 <main class="min-h-screen">
 	
 	<!-- Enhanced Hero Section -->
-<section class="relative px-6 py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 overflow-hidden">
-	<!-- Enhanced background decorative elements -->
+<section id="main-content" class="relative px-6 py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 overflow-hidden">
 	<div class="absolute inset-0">
 		<div class="absolute top-20 left-10 w-32 h-32 bg-blue-200/20 rounded-full blur-2xl animate-pulse"></div>
 		<div class="absolute top-40 right-20 w-24 h-24 bg-indigo-300/30 rounded-full blur-xl animate-pulse delay-1000"></div>
 		<div class="absolute bottom-32 left-1/4 w-40 h-40 bg-purple-200/15 rounded-full blur-2xl animate-pulse delay-2000"></div>
-		<!-- New floating elements -->
 		<div class="absolute top-1/2 right-10 w-16 h-16 bg-emerald-300/20 rounded-full blur-lg animate-bounce delay-3000"></div>
 		<div class="absolute bottom-20 right-1/3 w-28 h-28 bg-pink-300/15 rounded-full blur-xl animate-pulse delay-4000"></div>
 	</div>
 
 	<div class="max-w-7xl mx-auto relative z-10">
 		<div class="grid lg:grid-cols-2 gap-16 items-center">
-			<!-- Enhanced Left Content -->
 			<div class="max-w-2xl">
 				<div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 rounded-full text-sm font-medium mb-8 border border-blue-200/50 backdrop-blur-sm">
 					<span class="animate-pulse mr-2">🤝</span>
@@ -211,7 +208,6 @@
 						<span class="text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text animate-gradient-x">
 							Inclusion
 						</span>
-						<!-- Underline animation -->
 						<svg class="absolute -bottom-2 left-0 w-full h-3" viewBox="0 0 200 12" fill="none">
 							<path d="M2 6 C20 2 40 10 60 6 C80 2 100 10 120 6 C140 2 160 10 180 6"
 								  stroke="url(#gradient)" stroke-width="3" fill="none" class="animate-pulse"/>
@@ -238,7 +234,6 @@
 					Join thousands who have found their path to success and discovered their true potential.
 				</p>
 				
-				<!-- Enhanced CTA buttons -->
 				<div class="flex flex-col sm:flex-row gap-4 mb-8">
 					<a href="/login"
 						class="group relative bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden">
@@ -266,7 +261,6 @@
 				</div>
 			</div>
 
-			<!-- Enhanced Right Content -->
 			<div class="relative">
 				<div class="relative">
 					<div class="absolute -inset-6 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 rounded-3xl blur-2xl opacity-70 animate-pulse"></div>
@@ -284,10 +278,8 @@
 							id="landingpage-carousel-video"
 						></video>
 						
-						<!-- Enhanced gradient overlay -->
 						<div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none"></div>
 						
-						<!-- Floating controls -->
 						<div class="absolute inset-0 flex flex-col justify-end items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pb-6">
 							<div class="flex gap-3 bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg">
 								<Button
@@ -332,9 +324,8 @@
 	</div>
 </section>
 
-<!-- Enhanced Features Section -->
+<!-- Features Section -->
 <section class="relative px-6 py-20 bg-gradient-to-b from-white to-gray-50">
-	<!-- Enhanced section header -->
 	<div class="max-w-7xl mx-auto mb-16">
 		<div class="text-center">
 			<div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 rounded-full text-sm font-medium mb-6 border border-blue-200/50">
@@ -352,7 +343,7 @@
 	<div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
       
-            <!-- Enhanced Kaya Connect -->
+            <!-- Kaya Connect -->
             <div class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl border-2 border-gray-100 hover:border-blue-200 transition-all duration-500 hover:-translate-y-2">
               <div class="flex items-center justify-center h-48 bg-gradient-to-br from-blue-50 to-blue-100 relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-blue-200/30 rounded-full -translate-y-16 translate-x-16"></div>
@@ -375,7 +366,7 @@
               </div>
             </div>
       
-            <!-- Enhanced K Mart -->
+            <!-- K Mart -->
             <div class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl border-2 border-gray-100 hover:border-green-200 transition-all duration-500 hover:-translate-y-2">
               <div class="flex items-center justify-center h-48 bg-gradient-to-br from-green-50 to-green-100 relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-green-200/30 rounded-full -translate-y-16 translate-x-16"></div>
@@ -398,7 +389,7 @@
               </div>
             </div>
       
-            <!-- Enhanced K Pability -->
+            <!-- K Pability -->
             <div class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl border-2 border-gray-100 hover:border-purple-200 transition-all duration-500 hover:-translate-y-2">
               <div class="flex items-center justify-center h-48 bg-gradient-to-br from-purple-50 to-purple-100 relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-purple-200/30 rounded-full -translate-y-16 translate-x-16"></div>
@@ -423,7 +414,6 @@
       
           </div>
 
-		<!-- Enhanced Bottom CTA -->
 		<div class="text-center mt-16">
 			<div class="group inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 cursor-pointer relative overflow-hidden">
 				<div class="absolute inset-0 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -438,7 +428,6 @@
 <!-- Product Creation Process Section -->
 <section class="px-6 py-20 bg-gradient-to-br from-gray-50 to-emerald-50">
     <div class="max-w-7xl mx-auto">
-      <!-- Header -->
       <div class="text-center mb-16">
         <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-100 to-blue-100 text-emerald-700 rounded-full text-sm font-medium mb-6 border border-emerald-200/50">
           🌱 Inclusive Crafting

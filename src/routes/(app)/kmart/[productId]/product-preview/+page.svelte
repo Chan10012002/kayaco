@@ -156,7 +156,7 @@ Now, these PWD artists share their creations to inspire others—spreading the s
 	};
 </script>
 
-<div class="max-w-7xl mx-auto p-4 bg-white">
+<div id="main-content" class="max-w-7xl mx-auto p-4 bg-white">
 	<Toaster />
 
 	{#if product}

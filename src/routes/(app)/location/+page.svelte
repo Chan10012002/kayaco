@@ -97,7 +97,7 @@
   };
 </script>
 
-<div class="max-w-6xl mx-auto px-6 py-16">
+<div id="main-content" class="max-w-6xl mx-auto px-6 py-16">
   <h1 class="text-center mb-12 text-3xl font-bold text-gray-900">
     Contributors of KayaCo
   </h1>

@@ -48,7 +48,7 @@
 	];
 </script>
 
-<div class="max-w-6xl mx-auto bg-white p-6 sm:p-8">
+<div id="main-content" class="max-w-6xl mx-auto bg-white p-6 sm:p-8">
 	<!-- Header -->
 	<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
 		<div class="flex items-center gap-3">
