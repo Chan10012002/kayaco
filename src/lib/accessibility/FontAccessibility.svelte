@@ -180,6 +180,7 @@
 			<Button onclick={() => scrollToId('main-menu')} class="text-sm dark:bg-gray-700 dark:hover:bg-gray-600 rounded px-2 py-1">Skip to Menu</Button>
 			<Button onclick={() => scrollToId('main-content')} class="text-sm dark:bg-gray-700 dark:hover:bg-gray-600 rounded px-2 py-1">Skip to Content</Button>
 			<Button onclick={() => scrollToId('page-bottom')} class="text-sm dark:bg-gray-700 dark:hover:bg-gray-600 rounded px-2 py-1">Skip to Bottom</Button>
+			<Button href= /sitemap class="text-sm dark:bg-gray-700 dark:hover:bg-gray-600 rounded px-2 py-1">Sitemap</Button>
 		</div>
 	{/if}
 </div>

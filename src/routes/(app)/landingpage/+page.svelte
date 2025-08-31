@@ -231,7 +231,7 @@
 				</p>
 				<p class="text-gray-600 text-lg mb-12 leading-relaxed">
 					Empowering persons with disabilities through education, employment, and enterprise. 
-					Join thousands who have found their path to success and discovered their true potential.
+					Join people who have found their path to success and discovered their true potential.
 				</p>
 				
 				<div class="flex flex-col sm:flex-row gap-4 mb-8">

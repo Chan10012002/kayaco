@@ -199,7 +199,7 @@ Now, these PWD artists share their creations to inspire others—spreading the s
 				<span class="bg-blue-600 text-white text-sm px-2 py-1 rounded">-n%</span>
 			</div>
 
-			<div class="flex items-center space-x-2">pnp
+			<div class="flex items-center space-x-2">
 				<span class="text-sm text-gray-600">Promotions:</span>
 				<span class="bg-blue-600 text-white text-xs px-2 py-1 rounded">n% OFF</span>
 			</div>
