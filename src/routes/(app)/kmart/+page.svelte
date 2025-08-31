@@ -111,12 +111,8 @@
 			</Button>
 
 			<Dialog.Root>
-				<Dialog.Trigger>
-					<button
-						class="flex items-center justify-center gap-2 flex-1 rounded-md bg-blue-600 px-4 py-3 text-sm text-white hover:bg-blue-400 w-full font-medium"
-					>
-						<Truck size={16}/> Shipping Info
-					</button>
+				<Dialog.Trigger class="flex items-center justify-center gap-2 flex-1 rounded-md bg-blue-600 px-4 py-3 text-sm text-white hover:bg-blue-400 w-full font-medium">
+					<Truck size={16}/> Shipping Info
 				</Dialog.Trigger>
 				<Dialog.Content class="w-full max-w-md rounded-xl bg-white p-4 sm:p-6 shadow-lg mx-4">
 					<Dialog.Title class="text-lg font-semibold mb-4">Shipping Information</Dialog.Title>
@@ -134,10 +130,8 @@
 							<Input type="text" placeholder="123 Main St, Barangay, City" required />
 						</div>
 						<div class="flex justify-end pt-4">
-							<Dialog.Close>
-								<Button type="submit" class="bg-blue-600 hover:bg-blue-400 text-white">
-									Submit
-								</Button>
+							<Dialog.Close class="inline-flex items-center justify-center rounded-md text-sm font-medium bg-blue-600 hover:bg-blue-400 text-white h-10 px-4 py-2">
+								Submit
 							</Dialog.Close>
 						</div>
 					</form>
@@ -361,9 +355,10 @@
 				</div>
 			</div>
 			<div class="mt-4">
-  			<label class="block text-sm font-medium text-gray-700">Sort by</label>
+  			<label for="sort-dropdown" class="block text-sm font-medium text-gray-700">Sort by</label>
   			<DropdownMenu.Root>
     		<DropdownMenu.Trigger
+     		 id="sort-dropdown"
      		 class={buttonVariants({ variant: 'outline', class: 'w-full justify-between text-start' })}>
       		Relevance <ChevronDown />
     			</DropdownMenu.Trigger>
@@ -391,12 +386,8 @@
 					</Button>
 
 					<Dialog.Root>
-						<Dialog.Trigger>
-							<Button
-								class="flex items-center justify-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm text-white hover:bg-blue-400"
-							>
-								<Truck size={16}/> Shipping Info
-							</Button>
+						<Dialog.Trigger class="flex items-center justify-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm text-white hover:bg-blue-400">
+							<Truck size={16}/> Shipping Info
 						</Dialog.Trigger>
 						<Dialog.Content class="w-full max-w-md rounded-xl bg-white p-4 sm:p-6 shadow-lg mx-4">
 							<Dialog.Title class="text-lg font-semibold mb-4">Shipping Information</Dialog.Title>
@@ -414,10 +405,8 @@
 									<Input type="text" placeholder="123 Main St, Barangay, City" required />
 								</div>
 								<div class="flex justify-end pt-4">
-									<Dialog.Close>
-										<Button type="submit" class="bg-blue-600 hover:bg-blue-400 text-white">
-											Submit
-										</Button>
+									<Dialog.Close class="inline-flex items-center justify-center rounded-md text-sm font-medium bg-blue-600 hover:bg-blue-400 text-white h-10 px-4 py-2">
+										Submit
 									</Dialog.Close>
 								</div>
 							</form>
@@ -463,7 +452,7 @@
 			<div class="grid grid-cols-2 gap-2 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
 				{#each filteredProductsWithoutCategory as product}
 					<div 
-						class="cursor-pointer rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow"
+						class="group relative cursor-pointer rounded-2xl overflow-hidden bg-gradient-to-br from-white via-blue-50 to-blue-100 border-2 border-gray-200 shadow transition-all duration-300 hover:shadow-xl hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
 						onclick={(e) => navigateToProduct(product.id, e)}
 						role="button"
 						tabindex="0"

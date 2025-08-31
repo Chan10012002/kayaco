@@ -63,7 +63,9 @@
       <p class="text-base sm:text-lg leading-relaxed">
         You may request access, correction, or deletion of your personal data. To exercise these rights, please contact us at:
       </p>
-      <p class="mt-2 font-medium text-gray-700 text-base sm:text-lg">privacy@kayaco.com</p>
+      <a href="https://www.facebook.com/profile.php?id=61557218956953" target="_blank" rel="noopener noreferrer" class="group mt-2 font-medium text-blue-700 hover:underline text-base sm:text-lg">
+        Facebook: ApcasTech
+      </a>
     </section>
 
     <!-- Section 7 -->

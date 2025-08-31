@@ -13,7 +13,6 @@
 		<div>
 		  <h3 class="mb-4 text-lg font-semibold text-white">Learn</h3>
 		  <ul class="space-y-2 text-sm">
-			<li><a href="/" class="hover:text-emerald-400 transition-colors">How to Order</a></li>
 			<li><a href="/kmart/track-order" class="hover:text-emerald-400 transition-colors">Track your Order</a></li>
 			<li><a href="/faq" class="hover:text-emerald-400 transition-colors">FAQs</a></li>
 			<li><a href="/sitemap" class="hover:text-emerald-400 transition-colors">Sitemap</a></li>
@@ -40,8 +39,9 @@
 		<div class="flex flex-col items-center sm:items-start lg:items-end">
 		  <h3 class="mb-4 text-lg font-semibold text-white">Contact Us</h3>
 		  <div class="flex space-x-3">
-			<a href="https://www.facebook.com/profile.php?id=61557218956953" target="_blank" rel="noopener noreferrer">
-			  <FacebookIcon class="h-9 w-9 rounded-full bg-white/10 p-2 text-white group-hover:bg-emerald-500 group-hover:scale-110 transition-all" /></a>
+			<a href="https://www.facebook.com/profile.php?id=61557218956953" target="_blank" rel="noopener noreferrer" class="group">
+			  <FacebookIcon class="h-9 w-9 rounded-full bg-white/10 p-2 text-white group-hover:bg-emerald-500 group-hover:scale-110 transition-all" />
+			</a>
 			<a href="/" aria-label="Email" class="group">
 			  <MailIcon class="h-9 w-9 rounded-full bg-white/10 p-2 text-white group-hover:bg-emerald-500 group-hover:scale-110 transition-all" />
 			</a>

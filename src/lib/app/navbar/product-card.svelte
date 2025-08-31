@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
-	import { ShoppingCart } from '@lucide/svelte';
+	import { ShoppingCart, MapPin } from '@lucide/svelte';
 	import { enhance } from '$app/forms';
 	import { toast } from 'svelte-sonner';
 	import { invalidate } from '$app/navigation';
@@ -16,45 +16,81 @@
 		badgeColor: string;
 		price: string | number;
 		quantity: number;
+		lguId: string;
+		f_name: string | null;
 	};
 
 	let isSubmitting = false;
 </script>
+
 <div
-	class={`relative flex flex-col w-full h-full min-h-[420px] rounded-2xl overflow-hidden bg-white shadow-none sm:shadow-md transition-transform motion-safe:hover:scale-105 ${product.cardClass}`}
+	class={`group relative flex flex-col w-full h-full min-h-[440px] rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all duration-300 motion-safe:hover:scale-[1.02] border border-blue-50 ${product.cardClass}`}
 >
-	<!-- Image (with hover zoom) -->
-	<div class="overflow-hidden h-52 w-full">
+	<!-- Municipality -->
+	<div class="absolute top-3 left-3 z-10">
+		<span class="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold rounded-full bg-white/80 text-blue-700 shadow ring-1 ring-blue-200/60 backdrop-blur-md">
+			<MapPin class="w-4 h-4 text-emerald-500" />
+			<span class="font-medium">{product.f_name}</span>
+		</span>
+	</div>
+
+	<!-- Image Container with Gradient Overlay -->
+	<div class="relative overflow-hidden h-56 w-full bg-gradient-to-br from-blue-50 to-blue-100">
 		<img
 			src={product.imageSrc}
 			alt={product.title}
-			class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+			class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
 		/>
+		<div class="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent"></div>
 	</div>
 
-	<!-- Card content -->
-	<div class="flex flex-col justify-between flex-grow p-4 text-sm">
-		<div>
-			<h2 class="text-lg font-bold text-gray-800">{product.title}</h2>
-			<p class="text-gray-700">{product.description}</p>
+	<!-- Card Content -->
+	<div class="flex flex-col justify-between flex-grow p-5">
+		<div class="space-y-3">
+			<!-- Product Title -->
+			<div>
+				<h3 class="text-xl font-bold text-gray-900 leading-tight group-hover:text-blue-900 transition-colors duration-200">
+					{product.title}
+				</h3>
+			</div>
 
-			<div class="mt-1 flex flex-col gap-1 text-sm text-gray-600">
-				<span class="text-base font-semibold text-green-600">
-					{Number(product.price)
-						.toLocaleString('en-PH', {
-							style: 'currency',
-							currency: 'PHP',
-							minimumFractionDigits: 2
-						})
-						.replace('PHP', '')
-						.trim()}
-				</span>
-				<span>Available: {product.quantity}</span>
+			<!-- Description -->
+			<p class="text-gray-600 text-sm leading-relaxed line-clamp-2">
+				{product.description}
+			</p>
+
+			<!-- Price-->
+			<div class="space-y-2">
+				<div class="flex items-baseline justify-between">
+					<span class="text-2xl font-bold text-green-600">
+						₱{Number(product.price)
+							.toLocaleString('en-PH', {
+								minimumFractionDigits: 2,
+								maximumFractionDigits: 2
+							})}
+					</span>
+				</div>
+				
+				<!-- Stock Status -->
+				<div class="flex items-center gap-2">
+					<span 
+						class={`inline-flex items-center px-2 py-1 text-xs font-medium rounded-full ${
+							product.quantity > 10 
+								? 'text-emerald-700 bg-emerald-100' 
+								: product.quantity > 0 
+									? 'text-amber-700 bg-amber-100' 
+									: 'text-red-700 bg-red-100'
+						}`}
+					>
+						{product.quantity > 10 ? 'In Stock' : product.quantity > 0 ? 'Low Stock' : 'Out of Stock'}
+					</span>
+					<span class="text-xs text-gray-500">({product.quantity} available)</span>
+				</div>
 			</div>
 		</div>
 
-		<!-- Add to Cart Button at bottom -->
-		<div class="mt-4">
+		<!-- Add to Cart Section -->
+		<div class="mt-5 pt-4 border-t border-gray-100">
 			<form
 				method="POST"
 				action="?/addToCart"
@@ -79,12 +115,21 @@
 
 				<Button
 					type="submit"
-					disabled={isSubmitting}
-					class="w-full rounded-md bg-blue-600 px-3 py-2 text-white hover:bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+					disabled={isSubmitting || product.quantity === 0}
+					class={`w-full rounded-lg px-4 py-3 font-semibold text-white shadow-md transition-all duration-200 ${
+						product.quantity === 0
+							? 'bg-gray-400 cursor-not-allowed'
+							: 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 hover:shadow-lg transform hover:-translate-y-0.5'
+					} disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none`}
 					variant="secondary"
 				>
-					<ShoppingCart class="mr-1 inline h-5 w-5" />
-					{isSubmitting ? 'Adding...' : 'Add to Cart'}
+					<ShoppingCart class="mr-2 inline h-5 w-5" />
+					{isSubmitting 
+						? 'Adding...' 
+						: product.quantity === 0 
+							? 'Out of Stock' 
+							: 'Add to Cart'
+					}
 				</Button>
 			</form>
 		</div>

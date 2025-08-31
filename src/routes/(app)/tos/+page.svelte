@@ -1,10 +1,10 @@
-=<script lang="ts">
+<script lang="ts">
     // You can add navigation logic or props if needed
   </script>
   
   <section id="main-content" class="bg-gray-50 px-4 py-12 md:px-8 lg:px-32 md:py-20">
     <!-- Page Header -->
-    <div class="max-w-3xl mx-auto text-center">
+    <div class="max-w-4xl mx-auto">
       <h1 class="text-3xl font-bold text-gray-900 md:text-4xl">Terms of Service</h1>
       <p class="mt-4 text-gray-600 text-base md:text-lg">
         Please read these Terms of Service carefully before using our platform. 
@@ -78,8 +78,8 @@
         <h2 class="text-xl font-semibold text-gray-900">7. Contact Us</h2>
         <p class="mt-2 text-gray-600 text-sm leading-relaxed">
           If you have any questions about these Terms, please contact us at 
-          <a href="mailto:support@example.com" class="text-blue-600 hover:underline">
-           kayaco@gmail.com
+          <a href="https://www.facebook.com/profile.php?id=61557218956953" target="_blank" rel="noopener noreferrer" class="group text-blue-700 hover:underline">
+            Facebook: ApcasTech
           </a>.
         </p>
       </div>

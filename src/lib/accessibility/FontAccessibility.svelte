@@ -105,9 +105,6 @@
 			case "8":
 				increaseFont();
 				break;
-			case "c":
-				window.location.href = "/contact"; // Change as needed
-				break;
 			case "m":
 				window.location.href = "/sitemap"; // Change as needed
 				break;

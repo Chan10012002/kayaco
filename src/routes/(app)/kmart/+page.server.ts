@@ -1,4 +1,4 @@
-import { product, category, cart } from '$lib/server/db/schema';
+import { product, category, cart, user } from '$lib/server/db/schema';
 import db from '$lib/server/db';
 import { eq, and } from 'drizzle-orm';
 import { fail, redirect } from '@sveltejs/kit';
@@ -20,10 +20,14 @@ export const load: PageServerLoad = async ({ locals, depends }) => {
 			price: product.price,
 			quantity: product.quantity,
 			imageSrc: product.image_url,
-			category: category.category_name
+			lguId: product.lguId,
+			category: category.category_name,
+			f_name: user.f_name
+			
 		})
 		.from(product)
 		.leftJoin(category, eq(product.categoryId, category.id))
+		.leftJoin(user, eq(product.lguId, user.id)) 
 		.execute();
 
 	let cartItems: 

@@ -86,7 +86,7 @@
         <h2 class="text-lg sm:text-xl font-semibold text-black mb-2">9. Contact Us</h2>
         <p>
           <strong>KayaCo Customer Support</strong><br />
-          Email: <a href="/" class="text-blue-700 hover:underline">support@kayaco.com</a><br />
+          Facebook: <a href="https://www.facebook.com/profile.php?id=61557218956953" target="_blank" rel="noopener noreferrer" class="group text-blue-700 hover:underline">ApcasTech</a><br />
         </p>
       </div>
     </div>

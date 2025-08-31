@@ -10,14 +10,22 @@ import { user } from '$lib/server/db/schema.js';
 import { createClient } from '@supabase/supabase-js';
 import { eq } from 'drizzle-orm';
 
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_SERVICE_KEY;
+let supabase: ReturnType<typeof createClient> | null = null;
+let supabaseUrl: string | undefined;
+let supabaseKey: string | undefined;
 
-if (!supabaseUrl || !supabaseKey) {
-	throw new Error('Supabase URL or Service Key is not defined in environment variables');
+function getSupabase() {
+	if (!supabase) {
+		supabaseUrl = process.env.SUPABASE_URL;
+		supabaseKey = process.env.SUPABASE_SERVICE_KEY;
+		if (!supabaseUrl || !supabaseKey) {
+			// Instead of throwing, just return null and handle later
+			return null;
+		}
+		supabase = createClient(supabaseUrl, supabaseKey);
+	}
+	return supabase;
 }
-
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 export const load: PageServerLoad = async ({ depends }) => {
 	depends('refetch:lgu');
@@ -36,6 +44,7 @@ export const load: PageServerLoad = async ({ depends }) => {
 		lguUsers
 	};
 };
+
 export const actions: Actions = {
 	register: async (event) => {
 		const form = await superValidate(event, zod(lguSchema));
@@ -65,8 +74,12 @@ export const actions: Actions = {
 		const productThumbnailFolder = 'product-photos/';
 		let imgUrl = null;
 		if (image_url && image_url.size > 0) {
+			const supabaseClient = getSupabase();
+			if (!supabaseClient || !supabaseUrl) {
+				return setError(form, 'image_url', 'Image upload service is not configured');
+			}
 			const fileName = `${productThumbnailFolder}${Date.now()}-${image_url.name}`;
-			const { data, error } = await supabase.storage
+			const { data, error } = await supabaseClient.storage
 				.from('kayaco')
 				.upload(fileName, image_url, { cacheControl: '3600', upsert: false });
 
