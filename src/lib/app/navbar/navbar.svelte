@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
-	import { Search } from '@lucide/svelte';
+	import { Search, User, LogOut, ShoppingCart } from '@lucide/svelte';
+	import { invalidateAll } from '$app/navigation';
+	
+	let { user } = $props<{ user: { id: string; email: string } | null }>();
 	let isOpen = $state(false);
 
 	const toggleMenu = () => {
@@ -9,6 +12,15 @@
 
 	const closeMenu = () => {
 		isOpen = false;
+	};
+
+	const handleLogout = async () => {
+		try {
+			await fetch('/api/logout', { method: 'POST' });
+			await invalidateAll();
+		} catch (error) {
+			console.error('Logout failed:', error);
+		}
 	};
 
 	const links = [
@@ -50,9 +62,50 @@
 				</div>
 			</div>
 
-			<div class="hidden items-center space-x-2 md:flex">
-				<Button href="/login" variant="outline">Login</Button>
-				<Button href="/register" class="bg-blue-500 hover:bg-blue-400">Register</Button>
+			<div class="hidden items-center space-x-3 md:flex">
+				{#if user}
+					<div class="flex items-center space-x-4">
+						<a 
+							href="/cart" 
+							class="relative flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 group"
+						>
+							<div class="relative">
+								<ShoppingCart class="w-5 h-5" />
+							</div>
+							<span class="hidden lg:inline">Cart</span>
+						</a>
+
+						<!-- User Profile Section -->
+						<div class="flex items-center space-x-3">
+							<div class="flex items-center space-x-3 px-3 py-2 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+								<div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+									<User class="w-4 h-4 text-white" />
+								</div>
+								<div class="hidden lg:block">
+									<div class="text-sm font-medium text-gray-900">
+										{user.email.split('@')[0]}
+									</div>
+									<div class="text-xs text-gray-500">
+										{user.email}
+									</div>
+								</div>
+							</div>
+							
+							<!-- Logout Button -->
+							<Button 
+								onclick={handleLogout} 
+								variant="outline" 
+								class="flex items-center space-x-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:border-red-300 hover:bg-red-50 transition-all duration-200"
+							>
+								<LogOut class="w-4 h-4" />
+								<span class="hidden lg:inline">Logout</span>
+							</Button>
+						</div>
+					</div>
+				{:else}
+					<Button href="/login" variant="outline" class="px-4 py-2">Login</Button>
+					<Button href="/register" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 transition-colors duration-200">Register</Button>
+				{/if}
 			</div>
 
 			<!-- Mobile View -->
@@ -100,20 +153,42 @@
 				</div>
 				
 				<div class="mt-4 space-y-2 border-t border-gray-100 pt-4">
-					<a
-						href="/login"
-						onclick={closeMenu}
-						class="block rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-center text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
-					>
-						Login
-					</a>
-					<a
-						href="/register"
-						onclick={closeMenu}
-						class="block rounded-lg bg-blue-600 px-4 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700"
-					>
-						Register
-					</a>
+					{#if user}
+						<div class="px-3 py-2">
+							<div class="flex items-center space-x-2 text-sm text-gray-700">
+								<User class="w-4 h-4" />
+								<span>{user.email}</span>
+							</div>
+						</div>
+						<a
+							href="/cart"
+							onclick={closeMenu}
+							class="block rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-center text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+						>
+							Cart
+						</a>
+						<button
+							onclick={() => { handleLogout(); closeMenu(); }}
+							class="w-full rounded-lg bg-red-600 px-4 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-red-700"
+						>
+							Logout
+						</button>
+					{:else}
+						<a
+							href="/login"
+							onclick={closeMenu}
+							class="block rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-center text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+						>
+							Login
+						</a>
+						<a
+							href="/register"
+							onclick={closeMenu}
+							class="block rounded-lg bg-blue-600 px-4 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700"
+						>
+							Register
+						</a>
+					{/if}
 				</div>
 			</div>
 		{/if}

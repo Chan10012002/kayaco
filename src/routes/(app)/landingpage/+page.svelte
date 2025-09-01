@@ -123,7 +123,7 @@
 				"KayaCo has been a game-changer for our students. The platform provides genuine opportunities and builds real confidence.",
 			tag: "Education Impact",
 			stars: 5,
-			img: "/img/k-mart.jpg",
+			img: "/img/profile.jpg",
 			classes: {
 				border: "hover:border-blue-200",
 				ring: "ring-blue-100",
@@ -138,7 +138,7 @@
 				"Through K Mart, I've turned my woodworking passion into a thriving business. The support here is incredible.",
 			tag: "Business Success",
 			stars: 5,
-			img: "/img/k-mart.jpg",
+			img: "/img/profile.jpg",
 			classes: {
 				border: "hover:border-green-200",
 				ring: "ring-green-100",
@@ -153,7 +153,7 @@
 				"The accessible courses helped me develop new skills. Now I'm working in tech and loving every minute!",
 			tag: "Career Growth",
 			stars: 5,
-			img: "/img/k-mart.jpg",
+			img: "/img/profile.jpg",
 			classes: {
 				border: "hover:border-purple-200",
 				ring: "ring-purple-100",
@@ -168,7 +168,7 @@
 				"Kaya Connect matched me with an amazing employer who values my abilities. I finally found where I belong.",
 			tag: "Employment Success",
 			stars: 4,
-			img: "/img/k-mart.jpg",
+			img: "/img/profile.jpg",
 			classes: {
 				border: "hover:border-orange-200",
 				ring: "ring-orange-100",
@@ -276,6 +276,8 @@
 							muted={isMuted}
 							loop
 							id="landingpage-carousel-video"
+							aria-label="KayaCo introduction video showing the story of the platform"
+							title="KayaCo Introduction Video"
 						></video>
 						
 						<div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none"></div>
@@ -455,7 +457,7 @@
         ] as product, i}
           <Card class="rounded-3xl shadow-md hover:shadow-xl transition-all hover:-translate-y-2 overflow-hidden flex flex-col h-full">
             <div class="relative aspect-[4/3] overflow-hidden">
-              <img src={product.img} alt={product.name} class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
+              <img src={product.img} alt={`Product: ${product.name} - ${product.steps}`} class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
               <div class="absolute top-3 left-3">
                 <span class="px-3 py-1 text-xs font-semibold rounded-full bg-emerald-100 text-emerald-700">
                   Made by PWDs
@@ -509,7 +511,7 @@
                       <div class="relative">
                         <img
                           src={place.src}
-                          alt={place.municipality}
+                          alt={`logo of ${place.municipality} municipality`}
                           class="h-8 w-8 rounded-full object-cover ring-2 ring-white group-hover:ring-green-300 transition-all"
                         />
                       </div>
@@ -535,7 +537,7 @@
             <div class="relative aspect-[4/3] overflow-hidden">
               <img
                 src={product.imageSrc}
-                alt={product.title}
+                alt={`Product: ${product.title} - ${product.category}`}
                 class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <!-- Category Badge -->
@@ -626,7 +628,7 @@
 						<div
 							class={`relative h-14 w-14 overflow-hidden rounded-full ring-4 ${testimonial.classes.ring} group-hover:scale-110 transition-transform duration-300`}
 						>
-							<img src={testimonial.img} alt={testimonial.name} class="h-full w-full object-cover" />
+							<img src={testimonial.img} alt={`Portrait of ${testimonial.name}, ${testimonial.role}`} class="h-full w-full object-cover" />
 							<div
 								class={`absolute inset-0 rounded-full bg-gradient-to-t ${testimonial.classes.gradient} to-transparent opacity-30`}
 							></div>

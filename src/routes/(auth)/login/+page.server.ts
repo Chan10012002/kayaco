@@ -1,6 +1,6 @@
 import * as auth from '$lib/server/auth';
 import type { PageServerLoad, Actions } from './$types.js';
-import { fail } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import { setError, superValidate } from 'sveltekit-superforms';
 import { loginSchema } from '$lib/zod-schema';
 import { zod } from 'sveltekit-superforms/adapters';
@@ -46,5 +46,7 @@ export const actions: Actions = {
 		const sessionToken = auth.generateSessionToken();
 		const session = await auth.createSession(sessionToken, existingUser.id);
 		auth.setSessionTokenCookie(event, sessionToken, session.expiresAt);
+		
+		throw redirect(302, '/');
 	}
 };

@@ -3,10 +3,10 @@
 	import Footer from '$lib/app/navbar/footer.svelte';
 	import { ModeWatcher } from "mode-watcher";
 	import FontAccessibility from '$lib/accessibility/FontAccessibility.svelte';
-	let { children } = $props();
+	let { children, data } = $props();
 </script>
 <ModeWatcher />
 <FontAccessibility/>
-<Navbar />
+<Navbar user={data.user} />
 {@render children()}
 <Footer />

@@ -85,7 +85,7 @@
 			<div class="w-full h-[500px] max-w-lg rounded-2xl overflow-hidden border border-gray-200 shadow-lg flex items-center">
 				<img 
 					src="/img/logreg.png" 
-					alt="orange" 
+					alt="Products and Sellers" 
 					class="object-cover w-full h-full"
 				/>
 			</div>
