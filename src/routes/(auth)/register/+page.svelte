@@ -18,7 +18,7 @@
 		resetForm: false,
 		onResult({ result }) {
 			if (result.type === 'failure') {
-				toast.error('Registration Unsuccessful.');
+				toast.error('Email or Phone number already registered.');
 				console.log(result);
 			} else if (result.type === 'success') {
 				toast.success('Register successfully!');
@@ -82,15 +82,6 @@
 						</Form.Control>
 						<Form.FieldErrors />
 					</Form.Field>
-
-					<Select.Root type="single">
-						<Select.Trigger class="w-full text-black">Accessibility Feature</Select.Trigger>
-						<Select.Content>
-							<Select.Item value="light">Light</Select.Item>
-							<Select.Item value="dark">Dark</Select.Item>
-							<Select.Item value="system">System</Select.Item>
-						</Select.Content>
-					</Select.Root>
 
 					<Form.Field {form} name="password">
 						<Form.Control>

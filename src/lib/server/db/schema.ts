@@ -12,15 +12,6 @@ const orderStatuses = ['Pending', 'Processing', 'Completed', 'Delivered', 'Cance
 export type OrderStatus = (typeof orderStatuses)[number];
 export const orderStatus = pgEnum('order_status', orderStatuses);
 
-const access = [
-	'voice_commands',
-	'text_to_speech',
-	'adjustable_text_size',
-	'customizable_contrast_mode'
-] as const;
-export type access = (typeof access)[number];
-export const Access = pgEnum('access', access);
-
 const rating = ['1', '2', '3', '4', '5'] as const;
 export type rating = (typeof rating)[number];
 export const Rating = pgEnum('rating', rating);
@@ -31,7 +22,6 @@ export const user = pgTable('user', {
 	l_name: text('l_name').notNull(),
 	email: text('email').notNull().unique(),
 	phone: text('phone').notNull().unique(),
-	access: Access('access').notNull(),
 	hashedPassword: text('hashed_password').notNull(),
 	role: userRole('role').notNull(),
 	image_url: text('image_url')

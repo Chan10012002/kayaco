@@ -10,7 +10,9 @@ export const registerSchema = z
 		f_name: z.string().min(1, 'First name is required').max(100, 'First name is too long'),
 		l_name: z.string().min(1, 'Last name is required').max(100, 'Last name is too long'),
 		email: z.string().email('Invalid email'),
-		PhoneNo: z.string().min(11, 'Phone number should be 11 digits').max(11, 'Invalid Phone Number'),
+		PhoneNo: z
+			.string()
+			.regex(/^09\d{9}$/, 'Phone number must start with 09 and be 11 digits long'),
 		password: z
 			.string()
 			.min(8, 'Password must be at least 8 characters')

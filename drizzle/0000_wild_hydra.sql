@@ -1,10 +1,4 @@
 DO $$ BEGIN
- CREATE TYPE "public"."access" AS ENUM('voice_commands', 'text_to_speech', 'adjustable_text_size', 'customizable_contrast_mode');
-EXCEPTION
- WHEN duplicate_object THEN null;
-END $$;
---> statement-breakpoint
-DO $$ BEGIN
  CREATE TYPE "public"."rating" AS ENUM('1', '2', '3', '4', '5');
 EXCEPTION
  WHEN duplicate_object THEN null;
@@ -23,7 +17,7 @@ EXCEPTION
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- CREATE TYPE "public"."role" AS ENUM('user', 'admin');
+ CREATE TYPE "public"."role" AS ENUM('user', 'admin', 'lgu');
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -89,6 +83,7 @@ CREATE TABLE IF NOT EXISTS "product" (
 	"price" numeric NOT NULL,
 	"quantity" integer NOT NULL,
 	"image_url" text,
+	"lgu_id" text NOT NULL,
 	CONSTRAINT "product_product_name_unique" UNIQUE("product_name")
 );
 --> statement-breakpoint
@@ -125,9 +120,9 @@ CREATE TABLE IF NOT EXISTS "user" (
 	"l_name" text NOT NULL,
 	"email" text NOT NULL,
 	"phone" text NOT NULL,
-	"access" "access" NOT NULL,
 	"hashed_password" text NOT NULL,
 	"role" "role" NOT NULL,
+	"image_url" text,
 	CONSTRAINT "user_email_unique" UNIQUE("email"),
 	CONSTRAINT "user_phone_unique" UNIQUE("phone")
 );
@@ -188,6 +183,12 @@ END $$;
 --> statement-breakpoint
 DO $$ BEGIN
  ALTER TABLE "product" ADD CONSTRAINT "product_category_id_category_id_fk" FOREIGN KEY ("category_id") REFERENCES "public"."category"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "product" ADD CONSTRAINT "product_lgu_id_user_id_fk" FOREIGN KEY ("lgu_id") REFERENCES "public"."user"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;

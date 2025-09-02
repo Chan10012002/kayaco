@@ -1,5 +1,5 @@
 {
-  "id": "98c621d1-2e3b-47ac-94e5-3b032bab97e2",
+  "id": "e13edd9a-84ab-40d1-8554-86873c6a0d66",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -451,6 +451,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "lgu_id": {
+          "name": "lgu_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
         }
       },
       "indexes": {},
@@ -461,6 +467,19 @@
           "tableTo": "category",
           "columnsFrom": [
             "category_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "product_lgu_id_user_id_fk": {
+          "name": "product_lgu_id_user_id_fk",
+          "tableFrom": "product",
+          "tableTo": "user",
+          "columnsFrom": [
+            "lgu_id"
           ],
           "columnsTo": [
             "id"
@@ -736,13 +755,6 @@
           "primaryKey": false,
           "notNull": true
         },
-        "access": {
-          "name": "access",
-          "type": "access",
-          "typeSchema": "public",
-          "primaryKey": false,
-          "notNull": true
-        },
         "hashed_password": {
           "name": "hashed_password",
           "type": "text",
@@ -755,6 +767,12 @@
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": true
+        },
+        "image_url": {
+          "name": "image_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -779,16 +797,6 @@
     }
   },
   "enums": {
-    "public.access": {
-      "name": "access",
-      "schema": "public",
-      "values": [
-        "voice_commands",
-        "text_to_speech",
-        "adjustable_text_size",
-        "customizable_contrast_mode"
-      ]
-    },
     "public.rating": {
       "name": "rating",
       "schema": "public",
@@ -824,7 +832,8 @@
       "schema": "public",
       "values": [
         "user",
-        "admin"
+        "admin",
+        "lgu"
       ]
     }
   },
