@@ -5,6 +5,7 @@
   
 	type PageData = {
 		orders: Array<{
+			shippingAddressId: any;
 			id: string;
 			customer_name: string;
 			customer_email: string;
@@ -26,17 +27,19 @@
 	let { data }: { data: PageData } = $props();
 	let { orders } = data;
 
-	const transformedOrders = $derived(orders.map((order) => ({
-		id: order.id,
-		customer_name: order.customer_name,
-		customer_email: order.customer_email,
-		totalAmount: order.totalAmount,
-		status: order.status,
-		orderdate: order.orderdate,
-		full_address: order.full_address,
-		itemCount: order.items?.length || 0,
-		mainProduct: order.items?.[0]?.product_name || 'Multiple items'
-	})));
+	const transformedOrders = orders.map((order) => ({
+        id: order.id,
+        customer_name: order.customer_name,
+        customer_email: order.customer_email,
+        totalAmount: order.totalAmount,
+        status: order.status,
+        orderdate: order.orderdate,
+        full_address: order.full_address,
+        itemCount: order.items?.length || 0,
+        mainProduct: order.items?.[0]?.product_name || 'Multiple items',
+        shippingAddressId: order.shippingAddressId
+    }));
+
 
 	const totalOrders = $derived(orders.length);
 	const pendingOrders = $derived(orders.filter(o => o.status === 'Pending').length);

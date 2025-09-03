@@ -54,47 +54,62 @@ export const load: PageServerLoad = async ({ depends }) => {
 
 export const actions: Actions = {
 	product: async (event) => {
-		const form = await superValidate(event, zod(productSchema));
+	const formData = await event.request.formData();
 
-		if (!form.valid) {
-			return fail(400, { form });
-		}
+	// validate normal fields with superforms
+	const form = await superValidate(formData, zod(productSchema));
+	if (!form.valid) {
+		return fail(400, { form });
+	}
 
-		const { product_name, description, price, quantity, categoryId, image_url, lguId } = form.data;
+	const { product_name, description, price, quantity, categoryId } = form.data;
+	const lguId = event.locals.user?.id;
 
-		const productThumbnailFolder = 'product-photos/';
-		let imgUrl = null;
-		if (image_url && image_url.size > 0) {
-			const fileName = `${productThumbnailFolder}${Date.now()}-${image_url.name}`;
-			const { data, error } = await supabase.storage
-				.from('kayaco')
-				.upload(fileName, image_url, { cacheControl: '3600', upsert: false });
+	if (!lguId) {
+		return setError(form, '', 'You must be logged in as LGU to add a product');
+	}
+	const imageFile = formData.get('image_url') as File | null;
+	const productThumbnailFolder = 'product-photos/';
+	let imgUrl: string | null = null;
 
-			if (error) {
-				return setError(form, 'image_url', 'Error uploading image');
-			}
+	if (imageFile && imageFile.size > 0) {
+		const fileName = `${productThumbnailFolder}${Date.now()}-${imageFile.name}`;
 
-			imgUrl = `${supabaseUrl}/storage/v1/object/public/kayaco/${data.path}`;
-		}
-
-		try {
-			await db.insert(product).values({
-				id: crypto.randomUUID(),
-				categoryId,
-				lguId,
-				product_name,
-				description,
-				price,
-				quantity,
-				image_url: imgUrl
+		const { data, error: uploadError } = await supabase.storage
+			.from('kayaco')
+			.upload(fileName, imageFile, {
+				cacheControl: '3600',
+				upsert: false,
+				contentType: imageFile.type
 			});
-		} catch (e) {
-			if (e instanceof postgres.PostgresError) {
-				return setError(form, '', 'Unable to create product');
-			}
+
+		if (uploadError) {
+			console.error('Error uploading product image:', uploadError);
+			return setError(form, 'image_url', 'Error uploading product image');
+		}
+
+		imgUrl = `${supabaseUrl}/storage/v1/object/public/kayaco/${data.path}`;
+	}
+
+	try {
+		await db.insert(product).values({
+			id: uuidv4(),
+			categoryId,
+			lguId,
+			product_name,
+			description,
+			price: price.toString(),
+			quantity,
+			image_url: imgUrl
+		});
+	} catch (e) {
+		if (e instanceof postgres.PostgresError) {
+			console.error('DB insert error:', e);
 			return setError(form, '', 'Unable to create product');
 		}
-	},
+		return setError(form, '', 'Unable to create product');
+	}
+},
 	updateProduct: async (event) => {
 		const form = await superValidate(event, zod(updateProductSchema));
 
@@ -102,7 +117,7 @@ export const actions: Actions = {
 			return fail(400, { form });
 		}
 
-		const { productId, product_name, description, price, quantity, categoryId, image_url, lguId } =
+		const { productId, product_name, description, price, quantity, categoryId, image_url} =
 			form.data;
 
 		if (!productId || typeof productId !== 'string') {
@@ -126,7 +141,6 @@ export const actions: Actions = {
 			let imgUrl = existingProduct[0].image_url;
 
 			if (image_url && image_url.size > 0) {
-				// Extract the file path from the old thumbnail URL
 				if (imgUrl) {
 					const oldFilePath = imgUrl.replace(`${supabaseUrl}/storage/v1/object/public/kayaco/`, '');
 					const { error: deleteError } = await supabase.storage
@@ -137,8 +151,6 @@ export const actions: Actions = {
 						return setError(form, 'image_url', 'Error deleting old image');
 					}
 				}
-
-				// Upload the new thumbnail
 				const fileName = `${productThumbnailFolder}${Date.now()}-${image_url.name}`;
 
 				const { data, error: uploadError } = await supabase.storage
@@ -156,7 +168,6 @@ export const actions: Actions = {
 				.update(product)
 				.set({
 					categoryId,
-					lguId,
 					product_name,
 					description,
 					price,

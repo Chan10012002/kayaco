@@ -19,7 +19,6 @@ function getSupabase() {
 		supabaseUrl = process.env.SUPABASE_URL;
 		supabaseKey = process.env.SUPABASE_SERVICE_KEY;
 		if (!supabaseUrl || !supabaseKey) {
-			// Instead of throwing, just return null and handle later
 			return null;
 		}
 		supabase = createClient(supabaseUrl, supabaseKey);
@@ -97,11 +96,11 @@ export const actions: Actions = {
 				l_name,
 				email,
 				phone: PhoneNo,
-				access: 'voice_commands',
 				hashedPassword,
 				role: 'lgu',
-				image_url: imgUrl
+				image_url: imgUrl ?? null
 			});
+
 		} catch (e) {
 			if (e instanceof postgres.PostgresError) {
 				if (e.constraint_name === 'auth_user_email_unique') {

@@ -68,10 +68,9 @@ export const productSchema = z.object({
 	categoryId: z.string().min(1, 'Category is required'),
 	product_name: z.string().min(1, 'Product name is required').max(100, 'Product name is too long'),
 	description: z.string().min(1, 'Description is required').max(100, 'Description is too long'),
-	price: z.number().min(1, 'Price is required'),
-	quantity: z.number().min(1, 'Quantity is required').max(100, 'Quantity is too long'),
-	image_url: z.any().optional(),
-	lguId: z.string().min(1, 'Lgu is required')
+	price: z.coerce.number().min(1, 'Price is required'),
+	quantity: z.coerce.number().min(1, 'Quantity is required'),
+	image_url: z.any().optional()
 });
 
 export const updateProductSchema = productSchema.partial().extend({

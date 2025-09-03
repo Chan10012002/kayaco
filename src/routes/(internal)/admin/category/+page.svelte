@@ -49,7 +49,7 @@
 				<Form.Field {form} name="category_name">
 					<Form.Control>
 						{#snippet children({ props })}
-							<Input {...props} bind:value={$formData.category_name} placeholder="First Name" />
+							<Input {...props} bind:value={$formData.category_name} placeholder="Category Name" />
 						{/snippet}
 					</Form.Control>
 					<Form.FieldErrors />

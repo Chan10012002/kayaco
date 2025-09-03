@@ -7,7 +7,19 @@ import { zod } from 'sveltekit-superforms/adapters';
 import { verify } from '@node-rs/argon2';
 import { db } from '$lib/server/db';
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = async (event) => {
+	if (event.locals.user) {
+		const role = event.locals.user.role;
+		if (role === 'admin') {
+			throw redirect(302, '/admin/lgu');
+		} else if (role === 'user') {
+			throw redirect(302, '/landingpage');
+		} else if (role === 'lgu') {
+			throw redirect(302, '/lgu/product');
+		} else {
+			throw redirect(302, '/login');
+		}
+	}
 	return {
 		loginForm: await superValidate(zod(loginSchema))
 	};
@@ -47,6 +59,17 @@ export const actions: Actions = {
 		const session = await auth.createSession(sessionToken, existingUser.id);
 		auth.setSessionTokenCookie(event, sessionToken, session.expiresAt);
 		
-		throw redirect(302, '/');
+		if (event.locals.user) {
+		const role = event.locals.user.role;
+		if (role === 'admin') {
+			throw redirect(302, '/admin/lgu');
+		} else if (role === 'user') {
+			throw redirect(302, '/landingpage');
+		} else if (role === 'lgu') {
+			throw redirect(302, '/lgu/product');
+		} else {
+			throw redirect(302, '/login');
+		}
+		}
 	}
 };

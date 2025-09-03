@@ -100,15 +100,6 @@
 						<Form.FieldErrors />
 					</Form.Field>
 
-					<Select.Root type="single">
-						<Select.Trigger class="w-full text-black">Accessibility Feature</Select.Trigger>
-						<Select.Content>
-							<Select.Item value="light">Light</Select.Item>
-							<Select.Item value="dark">Dark</Select.Item>
-							<Select.Item value="system">System</Select.Item>
-						</Select.Content>
-					</Select.Root>
-
 					<Form.Field {form} name="password">
 						<Form.Control>
 							{#snippet children({ props })}

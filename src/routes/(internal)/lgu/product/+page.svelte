@@ -40,8 +40,6 @@
 	let products = $derived(data.products);
 
 	let categories = $derived(data.categories);
-
-	let municipality = $derived(data.municipality);
 </script>
 
 <div class="space-y-6 px-12">
@@ -89,27 +87,6 @@
 									<Select.Content>
 										{#each categories as category}
 											<Select.Item value={category.id} label={category.category_name} />
-										{/each}
-									</Select.Content>
-								</Select.Root>
-							{/snippet}
-						</Form.Control>
-						<Form.FieldErrors />
-					</Form.Field>
-
-					<Form.Field {form} name="lguId">
-						<Form.Control>
-							{#snippet children({ props })}
-								<Select.Root type="single" bind:value={$formData.lguId} name={props.name}>
-									<Select.Trigger {...props}>
-										{$formData.lguId
-											? municipality.find((lgu: { id: string }) => lgu.id === $formData.lguId)
-													?.f_name
-											: 'Select a Municipality'}
-									</Select.Trigger>
-									<Select.Content>
-										{#each municipality as lgu}
-											<Select.Item value={lgu.id} label={lgu.f_name} />
 										{/each}
 									</Select.Content>
 								</Select.Root>
@@ -174,19 +151,19 @@
 						<Form.FieldErrors />
 					</Form.Field>
 					<Form.Field {form} name="image_url">
-						<Form.Control>
-							{#snippet children({ props })}
-								<Input
-									placeholder="Enter Product Image"
-									type="file"
-									{...props}
-									bind:value={$formData.image_url}
-									accept="image/*"
-								/>
-							{/snippet}
-						</Form.Control>
-						<Form.FieldErrors />
-					</Form.Field>
+					<Form.Control>
+						{#snippet children({ props })}
+							<Input
+								placeholder="Enter Product Image"
+								type="file"
+								{...props}
+								bind:value={$formData.image_url}
+								accept="image/*"
+							/>
+						{/snippet}
+					</Form.Control>
+					<Form.FieldErrors />
+				</Form.Field>
 				</div>
 
 				<Dialog.Footer class="mt-8 gap-4 md:gap-0">
